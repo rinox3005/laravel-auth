@@ -17,12 +17,14 @@ class ProjectsTableSeeder extends Seeder
 
         $types = ['Front-End', 'Back-End', 'Full-Stack'];
         $languages = ['PHP', 'JavaScript', 'Vue', 'Laravel', 'Java', 'C#', 'C++', 'Python'];
+        $status = ['Completed', 'Pending'];
 
         for ($i = 0; $i < 10; $i++) {
             $project = new Project();
             $project->title = $faker->sentence(3); // Titolo con 3 parole
             $project->type = $faker->randomElement($types);
             $project->programming_language = $faker->randomElement($languages);
+            $project->status = $faker->randomElement($status);
             $project->save();
         }
     }
