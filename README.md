@@ -1,97 +1,21 @@
-# Laravel Auth Template + Bootstrap
+# Laravel Boolfolio - Base
 
-```
-composer create-project laravel/laravel:^10.0 nomeprogetto
-```
+Creare con Laravel un sistema di gestione del Portfolio di progetti.
 
-# Installazione breeze
+# Descrizione
 
-```
-composer require laravel/breeze --dev
-```
+Utilizzare laravel breeze per utilizzare il sistema di autenticazione.
 
-# Scaffold dell'autenticazione breeze/blade
+## Milestone 1
 
-```
-php artisan breeze:install
-```
+Autenticazione: partire con l'autenticazione e la creazione di un layout per back-office.
 
--   Which Breeze stack would you like to install? Blade with Alpine
--   Would you like dark mode support? Yes
--   Which testing framework do you prefer? PHPUnit
+## Milestone 2
 
-## Eseguire i passaggi per installare bootstrap invece di tailwind
+Creazione del modello Project con relativa migrazione, seeder, controller e rotte
 
-```
-npm remove postcss
-npm remove tailwindcss
-npm i --save-dev sass
-npm i --save bootstrap @popperjs/core
-```
+# Bonus
 
-Cancellare il file tailwind.config.js e postcss.config.js
+Per la parte di back-office creare un resource controller Admin\ProjectController per gestire tutte le operazioni CRUD dei progetti.
 
-```
-rm tailwind.config.js
-rm postcss.config.js
-```
-
-Rinominiamo la cartella css in scss
-
-```
-mv resources/css resources/scss
-```
-
-ed il file app.css in app.scss
-
-```
-mv resources/scss/app.css  resources/scss/app.scss
-```
-
-## Nel file app.scss
-
-Cancelliamo gli import di tailwind dal file app.scss e inseriamo:
-
-```
-@import "~bootstrap/scss/bootstrap";
-```
-
-## Nel file vite.config.js
-
--   modifichiamo il percorso del css
--   aggiungiamo un alias per resources e per il bootstrap
-
-```
-import path from 'path';
-
-resolve: {
-        alias: {
-            '~resources': '/resources/',
-            '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap')
-        }
-    },
-```
-
-## Nel file app.js
-
--   togliere il codice che imposta alpine, lasciando solo la prima riga
--   importare app.css, bootstrap e img
-
-```
-import '~resources/scss/app.scss'
-import * as bootstrap from 'bootstrap'
-import.meta.glob([
-    '../img/**'
-])
-```
-
-## Inserire le views con bootstrap
-
-Cancellare tutti i file di default dalla cartella views e inserire i file presenti in questa repo
-
-## Partenza
-
-1. installare le dipendenze di npm e composer
-2. inserire dati nel file .env
-3. far partire le migrations
-4. avviare il server (php e node)
+Implementare la validazione dei dati dei Progetti nelle operazioni CRUD che lo richiedono usando due form requests.
