@@ -1,5 +1,9 @@
 @extends("layouts.app")
 
+@section("title")
+    Project Details
+@endsection
+
 @section("content")
     <div class="container">
         <h1 class="my-4 text-center">Project Details</h1>

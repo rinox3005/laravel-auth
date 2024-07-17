@@ -1,5 +1,9 @@
 @extends("layouts.app")
 
+@section("title")
+    {{ Auth::user()->name }}'s Projects
+@endsection
+
 @section("content")
     <div class="container">
         <h1 class="fw-semibold my-4">My Projects</h1>

@@ -1,5 +1,9 @@
 @extends("layouts.app")
 
+@section("title")
+    New Project
+@endsection
+
 @section("content")
     <div class="container">
         <div class="card mt-4">
