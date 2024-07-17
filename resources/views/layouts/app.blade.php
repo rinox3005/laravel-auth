@@ -16,6 +16,11 @@
             rel="stylesheet"
         />
 
+        <!-- FontAwesome -->
+        <script
+            src="https://kit.fontawesome.com/7711c3f1fc.js"
+            crossorigin="anonymous"
+        ></script>
         <!-- Usando Vite -->
         @vite(["resources/js/app.js"])
     </head>
