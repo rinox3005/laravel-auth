@@ -2,8 +2,8 @@
 
 @section("content")
     <div class="container">
-        <h1 class="my-3 text-center">My Projects</h1>
-        <ul class="list-group mt-4">
+        <h1 class="fw-semibold my-4">My Projects</h1>
+        <ul class="list-group mb-5 mt-3">
             @foreach ($projects as $project)
                 <li
                     class="list-group-item d-flex justify-content-between align-items-center"
