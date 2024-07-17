@@ -23,7 +23,11 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $types = ['Front-End', 'Back-End', 'Full-Stack'];
+        $programmingLanguages = ['PHP', 'JavaScript', 'Python', 'Ruby', 'Java', 'C#', 'C++'];
+        $statuses = ['Completed', 'Pending'];
+
+        return view('admin.projects.create', compact('types', 'programmingLanguages', 'statuses'));
     }
 
     /**
@@ -31,7 +35,15 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        $project = new Project();
+
+        $project->title = $request->title;
+        $project->type = $request->type;
+        $project->programming_language = $request->programming_language;
+        $project->status = $request->status;
+        $project->save();
+
+        return redirect()->route('admin.projects.show', $project->id);
     }
 
     /**

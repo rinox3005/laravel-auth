@@ -11,7 +11,7 @@ class StoreProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,20 @@ class StoreProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|min:5',
+            'type' => 'required|string',
+            'programming_language' => 'required|string|max:255',
+            'status' => 'required|string',
+        ];
+    }
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'The title is required.',
+            'title.min' => 'The title must be at least 5 characters.',
+            'type.required' => 'The type is required.',
+            'programming_language.required' => 'The programming language is required.',
+            'status.required' => 'The status is required.',
         ];
     }
 }

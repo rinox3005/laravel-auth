@@ -3,6 +3,15 @@
 @section("content")
     <div class="container">
         <h1 class="fw-semibold my-4">My Projects</h1>
+        <div class="mb-4">
+            <a
+                href="{{ route("admin.projects.create") }}"
+                class="btn btn-success"
+            >
+                <i class="fas fa-plus"></i>
+                Create New Project
+            </a>
+        </div>
         <ul class="list-group mb-5 mt-3">
             @foreach ($projects as $project)
                 <li
