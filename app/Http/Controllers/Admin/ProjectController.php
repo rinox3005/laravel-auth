@@ -35,12 +35,15 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+
+        $data = $request->validated();
+
         $project = new Project();
 
-        $project->title = $request->title;
-        $project->type = $request->type;
-        $project->programming_language = $request->programming_language;
-        $project->status = $request->status;
+        $project->title = $data['title'];
+        $project->type = $data['type'];
+        $project->programming_language = $data['programming_language'];
+        $project->status = $data['status'];
         $project->save();
 
         return redirect()->route('admin.projects.show', $project->id);
@@ -59,7 +62,11 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $types = ['Front-End', 'Back-End', 'Full-Stack'];
+        $programmingLanguages = ['PHP', 'JavaScript', 'Python', 'Ruby', 'Java', 'C#', 'C++'];
+        $statuses = ['completed', 'in-progress', 'pending'];
+
+        return view('admin.projects.edit', compact('project', 'types', 'programmingLanguages', 'statuses'));
     }
 
     /**
@@ -67,7 +74,16 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+
+        $data = $request->validated();
+
+        $project->title = $data['title'];
+        $project->type = $data['type'];
+        $project->programming_language = $data['programming_language'];
+        $project->status = $data['status'];
+        $project->save();
+
+        return redirect()->route('admin.projects.show', $project->id);
     }
 
     /**

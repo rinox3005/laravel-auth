@@ -3,8 +3,8 @@
 @section("content")
     <div class="container">
         <div class="card mt-4">
-            <div class="card-header bg-primary text-white">
-                <h2 class="mb-0">New Project</h2>
+            <div class="card-header bg-warning text-white">
+                <h2 class="mb-0">Edit Project</h2>
             </div>
             <div class="card-body">
                 @if ($errors->any())
@@ -18,10 +18,11 @@
                 @endif
 
                 <form
-                    action="{{ route("admin.projects.store") }}"
+                    action="{{ route("admin.projects.update", $project->id) }}"
                     method="POST"
                 >
                     @csrf
+                    @method("PUT")
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input
@@ -29,7 +30,7 @@
                             class="form-control"
                             id="title"
                             name="title"
-                            value="{{ old("title") }}"
+                            value="{{ old("title", $project->title) }}"
                             required
                         />
                     </div>
@@ -44,7 +45,7 @@
                             @foreach ($types as $type)
                                 <option
                                     value="{{ $type }}"
-                                    {{ old("type") == $type ? "selected" : "" }}
+                                    {{ old("type", $project->type) == $type ? "selected" : "" }}
                                 >
                                     {{ $type }}
                                 </option>
@@ -64,7 +65,7 @@
                             @foreach ($programmingLanguages as $language)
                                 <option
                                     value="{{ $language }}"
-                                    {{ old("programming_language") == $language ? "selected" : "" }}
+                                    {{ old("programming_language", $project->programming_language) == $language ? "selected" : "" }}
                                 >
                                     {{ $language }}
                                 </option>
@@ -82,15 +83,15 @@
                             @foreach ($statuses as $status)
                                 <option
                                     value="{{ $status }}"
-                                    {{ old("status") == $status ? "selected" : "" }}
+                                    {{ old("status", $project->status) == $status ? "selected" : "" }}
                                 >
-                                    {{ $status }}
+                                    {{ ucfirst($status) }}
                                 </option>
                             @endforeach
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        Create Project
+                    <button type="submit" class="btn btn-warning">
+                        Update Project
                     </button>
                 </form>
             </div>
