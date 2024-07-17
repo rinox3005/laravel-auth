@@ -64,7 +64,7 @@ class ProjectController extends Controller
     {
         $types = ['Front-End', 'Back-End', 'Full-Stack'];
         $programmingLanguages = ['PHP', 'JavaScript', 'Python', 'Ruby', 'Java', 'C#', 'C++'];
-        $statuses = ['completed', 'in-progress', 'pending'];
+        $statuses = ['Completed', 'Pending'];
 
         return view('admin.projects.edit', compact('project', 'types', 'programmingLanguages', 'statuses'));
     }
@@ -91,6 +91,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect()->route('admin.projects.index');
     }
 }

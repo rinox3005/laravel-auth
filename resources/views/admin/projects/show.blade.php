@@ -64,6 +64,46 @@
                         <i class="fas fa-edit"></i>
                         Edit Project
                     </a>
+                    <button
+                        class="btn btn-danger btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#deleteModal"
+                        data-bs-project-id="{{ $project->id }}"
+                        data-bs-project-title="{{ $project->title }}"
+                    >
+                        <i class="fas fa-trash"></i>
+                        Delete Project
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div
+        class="modal fade"
+        id="deleteModal"
+        tabindex="-1"
+        aria-labelledby="deleteModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 class="fw-semibold">Delete Confirmation:</h5>
+                    <p>
+                        Are you sure you want to delete
+                        <span class="fw-semibold">{{ $project->title }}</span>
+                        ?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                    >
+                        Cancel
+                    </button>
                     <form
                         action="{{ route("admin.projects.destroy", $project->id) }}"
                         method="POST"
