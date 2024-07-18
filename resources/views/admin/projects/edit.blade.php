@@ -22,7 +22,7 @@
                 @endif
 
                 <form
-                    action="{{ route("admin.projects.update", $project->id) }}"
+                    action="{{ route("admin.projects.update", $project) }}"
                     method="POST"
                 >
                     @csrf

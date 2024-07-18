@@ -31,13 +31,13 @@
                     </div>
                     <div>
                         <a
-                            href="{{ route("admin.projects.show", $project->id) }}"
+                            href="{{ route("admin.projects.show", $project) }}"
                             class="btn btn-primary btn-sm"
                         >
                             <i class="fas fa-eye"></i>
                         </a>
                         <a
-                            href="{{ route("admin.projects.edit", $project->id) }}"
+                            href="{{ route("admin.projects.edit", $project) }}"
                             class="btn btn-warning btn-sm"
                         >
                             <i class="fas fa-pencil"></i>
@@ -83,7 +83,7 @@
                         Cancel
                     </button>
                     <form
-                        action="{{ route("admin.projects.destroy", $project->id) }}"
+                        action="{{ route("admin.projects.destroy", $project) }}"
                         method="POST"
                         style="display: inline-block"
                     >

@@ -62,7 +62,7 @@
                         Back to Projects
                     </a>
                     <a
-                        href="{{ route("admin.projects.edit", $project->id) }}"
+                        href="{{ route("admin.projects.edit", $project) }}"
                         class="btn btn-warning me-2"
                     >
                         <i class="fas fa-edit"></i>
@@ -109,7 +109,7 @@
                         Cancel
                     </button>
                     <form
-                        action="{{ route("admin.projects.destroy", $project->id) }}"
+                        action="{{ route("admin.projects.destroy", $project) }}"
                         method="POST"
                         style="display: inline-block"
                     >

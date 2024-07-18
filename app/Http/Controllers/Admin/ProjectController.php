@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -37,16 +38,18 @@ class ProjectController extends Controller
     {
 
         $data = $request->validated();
+        $data['slug'] = Str::of($data['title'])->slug();
 
         $project = new Project();
 
         $project->title = $data['title'];
         $project->type = $data['type'];
         $project->programming_language = $data['programming_language'];
+        $project->slug = $data['slug'];
         $project->status = $data['status'];
         $project->save();
 
-        return redirect()->route('admin.projects.show', $project->id);
+        return redirect()->route('admin.projects.show', $project);
     }
 
     /**
@@ -54,6 +57,9 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+
+
+
         return view('admin.projects.show', compact('project'));
     }
 
@@ -76,14 +82,16 @@ class ProjectController extends Controller
     {
 
         $data = $request->validated();
+        $data['slug'] = Str::of($data['title'])->slug();
 
         $project->title = $data['title'];
         $project->type = $data['type'];
         $project->programming_language = $data['programming_language'];
+        $project->slug = $data['slug'];
         $project->status = $data['status'];
         $project->save();
 
-        return redirect()->route('admin.projects.show', $project->id);
+        return redirect()->route('admin.projects.show', $project);
     }
 
     /**
