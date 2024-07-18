@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-    <div class="container">
+    <div class="d-flex align-items-center container">
         <a
             class="navbar-brand d-flex align-items-center"
             href="{{ url("/") }}"
@@ -10,7 +10,7 @@
                     src="{{ Vite::asset("resources/img/logo-guest.png") }}"
                     alt="logo-guest"
                 />
-                <h3 class="fw-bold mb-0 ms-2">Project Manager</h3>
+                <h3 class="fw-bold mb-0 ms-2">My Projects</h3>
             </div>
         </a>
 
@@ -28,7 +28,7 @@
 
         <div class="navbar-collapse collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav fw-semibold me-auto mt-1">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url("/") }}">
                         {{ __("Home") }}
@@ -53,14 +53,14 @@
                             class="nav-link"
                             href="{{ route("admin.projects.index") }}"
                         >
-                            {{ __("Projects Manager") }}
+                            {{ __("Projects") }}
                         </a>
                     </li>
                 @endauth
             </ul>
 
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav fw-semibold ml-auto mt-1">
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
