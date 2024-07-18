@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            $table->string('status', 20)->after('programming_language');
+            $table->string('slug', 255)->after('programming_language');
+            $table->string('status', 20)->after('slug');
         });
     }
 
@@ -22,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            $table->dropColumn('status');
+            $table->dropColumn('slug', 'status');
         });
     }
 };
