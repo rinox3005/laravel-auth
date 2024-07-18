@@ -6,15 +6,17 @@
 
 @section("content")
     <div class="container">
-        <h1 class="fw-semibold my-4">My Projects</h1>
-        <div class="mb-4">
-            <a
-                href="{{ route("admin.projects.create") }}"
-                class="btn btn-success"
-            >
-                <i class="fas fa-plus"></i>
-                Create New Project
-            </a>
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="fw-semibold d-inline my-4">My Projects</h1>
+            <div class="d-inline">
+                <a
+                    href="{{ route("admin.projects.create") }}"
+                    class="btn btn-success"
+                >
+                    <i class="fas fa-plus"></i>
+                    Create New Project
+                </a>
+            </div>
         </div>
         <ul class="list-group mb-5 mt-3">
             @foreach ($projects as $project)
