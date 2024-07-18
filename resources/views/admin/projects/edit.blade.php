@@ -7,7 +7,7 @@
 @section("content")
     <div class="container">
         <div class="card mt-4">
-            <div class="card-header bg-warning text-white">
+            <div class="card-header bg-warning text-dark">
                 <h2 class="mb-0">Edit Project</h2>
             </div>
             <div class="card-body">
@@ -94,6 +94,13 @@
                             @endforeach
                         </select>
                     </div>
+                    <a
+                        href="{{ route("admin.projects.index") }}"
+                        class="btn btn-warning me-1"
+                    >
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Projects
+                    </a>
                     <button type="submit" class="btn btn-warning">
                         Update Project
                     </button>

@@ -93,6 +93,13 @@
                             @endforeach
                         </select>
                     </div>
+                    <a
+                        href="{{ route("admin.projects.index") }}"
+                        class="btn btn-primary me-1"
+                    >
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Projects
+                    </a>
                     <button type="submit" class="btn btn-primary">
                         Create Project
                     </button>

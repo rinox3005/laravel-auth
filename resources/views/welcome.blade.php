@@ -5,8 +5,8 @@
 @endsection
 
 @section("content")
-    <div class="jumbotron bg-light mb-4 p-5">
-        <div class="container py-5 text-center">
+    <div class="jumbotron jumbo-bg mb-4 p-5 text-white">
+        <div class="position-relative z-2 container py-5 text-center">
             <h1 class="display-5 fw-bold">Welcome to My Projects Showcase</h1>
             <p class="col-md-8 fs-4 mx-auto">
                 Explore my diverse range of projects. From innovative tech
