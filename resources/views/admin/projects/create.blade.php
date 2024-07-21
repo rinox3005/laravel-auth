@@ -6,7 +6,7 @@
 
 @section("content")
     <div class="container">
-        <div class="card mt-4">
+        <div class="card my-3">
             <div class="card-header bg-primary text-white">
                 <h2 class="mb-0">New Project</h2>
             </div>
@@ -57,6 +57,31 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="description" class="form-label">
+                            Description
+                        </label>
+                        <textarea
+                            class="form-control"
+                            id="description"
+                            name="description"
+                            rows="4"
+                        >
+{{ old("description") }}</textarea
+                        >
+                    </div>
+                    <div class="mb-3">
+                        <label for="key_features" class="form-label">
+                            Key Features
+                        </label>
+                        <input
+                            class="form-control"
+                            id="key_features"
+                            name="key_features"
+                            rows="4"
+                            value="{{ old("key_features") }}"
+                        ></input>
+                    </div>
+                    <div class="mb-3">
                         <label for="programming_language" class="form-label">
                             Programming Language
                         </label>
@@ -95,13 +120,14 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="preview" class="form-label">Preview Image</label>
+                        <label for="preview" class="form-label">
+                            Preview Image
+                        </label>
                         <input
                             type="file"
                             class="form-control"
                             id="preview"
                             name="preview"
-                            required
                         />
                     </div>
                     <a

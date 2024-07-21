@@ -6,7 +6,7 @@
 
 @section("content")
     <div class="container">
-        <div class="card mt-4">
+        <div class="card my-3">
             <div class="card-header bg-warning text-dark">
                 <h2 class="mb-0">Edit Project</h2>
             </div>
@@ -56,6 +56,31 @@
                                 </option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">
+                            Description
+                        </label>
+                        <textarea
+                            class="form-control"
+                            id="description"
+                            name="description"
+                            rows="4"
+                        >
+{{ old("description", $project->description) }}</textarea
+                        >
+                    </div>
+                    <div class="mb-3">
+                        <label for="key_features" class="form-label">
+                            Key Features
+                        </label>
+                       <input
+                            class="form-control"
+                            id="key_features"
+                            name="key_features"
+                            rows="4"
+                            value="{{ old("key_features", $project->key_features) }}"
+                        ></input>
                     </div>
                     <div class="mb-3">
                         <label for="programming_language" class="form-label">

@@ -15,8 +15,7 @@
                 <span
                     class="badge @if ($project->status == "Completed")
                         bg-success
-                        text-light
-                    @elseif ($project->status == "Pending")
+                    @elseif ($project->status == "In Progress")
                         bg-warning
                         text-dark
                     @endif"
@@ -26,32 +25,61 @@
             </div>
             <div class="card-body">
                 <div class="row mb-3">
-                    <div class="col-md-6">
-                        <p class="mb-2">
-                            <strong>ID:</strong>
-                            {{ $project->id }}
-                        </p>
+                    <div class="col-md-9">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <p class="mb-2">
+                                    <strong>ID:</strong>
+                                    {{ $project->id }}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-2">
+                                    <strong>Type:</strong>
+                                    {{ $project->type }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <p class="mb-2">
+                                    <strong>Programming Language:</strong>
+                                    {{ $project->programming_language }}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-2">
+                                    <strong>Created At:</strong>
+                                    {{ $project->created_at->format("d M Y, H:i") }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <p class="mb-2">
+                                    <strong>Description:</strong>
+                                    {{ $project->description }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <p class="mb-2">
+                                    <strong>Key Features:</strong>
+                                    {{ $project->key_features }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <p class="mb-2">
-                            <strong>Type:</strong>
-                            {{ $project->type }}
-                        </p>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <p class="mb-2">
-                            <strong>Programming Language:</strong>
-                            {{ $project->programming_language }}
-                        </p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="mb-2">
-                            <strong>Created At:</strong>
-                            {{ $project->created_at->format("d M Y, H:i") }}
-                        </p>
-                    </div>
+                    @if ($project->preview_path)
+                        <div class="col-md-3 text-center">
+                            <img
+                                src="{{ asset($project->preview_path) }}"
+                                alt="{{ $project->title }} Preview"
+                                class="img-thumbnail preview-show"
+                            />
+                        </div>
+                    @endif
                 </div>
                 <div class="d-flex justify-content-end">
                     <a
