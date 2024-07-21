@@ -26,6 +26,7 @@ class StoreProjectRequest extends FormRequest
             'type' => 'required|string',
             'programming_language' => 'required|string|max:255',
             'status' => 'required|string',
+            'preview' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ];
     }
     public function messages(): array
@@ -33,9 +34,13 @@ class StoreProjectRequest extends FormRequest
         return [
             'title.required' => 'The title is required.',
             'title.min' => 'The title must be at least 5 characters.',
+            'title.unique' => 'The title has already been taken.',
             'type.required' => 'The type is required.',
             'programming_language.required' => 'The programming language is required.',
             'status.required' => 'The status is required.',
+            'preview.image' => 'The preview must be an image.',
+            'preview.mimes' => 'The preview must be a file of type: jpeg, png, jpg, gif, svg.',
+            'preview.max' => 'The preview must not be greater than 2048 kilobytes.',
         ];
     }
 }

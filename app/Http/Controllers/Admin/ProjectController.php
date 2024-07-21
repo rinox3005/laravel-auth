@@ -36,17 +36,26 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-
         $data = $request->validated();
         $data['slug'] = Str::of($data['title'])->slug();
 
-        $project = new Project();
+        // Handle file upload
+        if ($request->hasFile('preview')) {
+            $file = $request->file('preview');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $imagePath = $file->storeAs('images', $fileName, 'public');
+            $data['preview_path'] = 'storage/' . $imagePath;
+        }
 
+        $project = new Project();
         $project->title = $data['title'];
         $project->type = $data['type'];
         $project->programming_language = $data['programming_language'];
         $project->slug = $data['slug'];
         $project->status = $data['status'];
+        if (isset($data['preview_path'])) {
+            $project->preview_path = $data['preview_path'];
+        }
         $project->save();
 
         return redirect()->route('admin.projects.show', $project);
@@ -57,9 +66,6 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-
-
-
         return view('admin.projects.show', compact('project'));
     }
 
@@ -80,15 +86,25 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-
         $data = $request->validated();
         $data['slug'] = Str::of($data['title'])->slug();
+
+        // Handle file upload
+        if ($request->hasFile('preview')) {
+            $file = $request->file('preview');
+            $fileName = $file->getClientOriginalName();
+            $imagePath = $file->storeAs('images', $fileName, 'public');
+            $data['preview_path'] = 'storage/' . $imagePath;
+        }
 
         $project->title = $data['title'];
         $project->type = $data['type'];
         $project->programming_language = $data['programming_language'];
         $project->slug = $data['slug'];
         $project->status = $data['status'];
+        if (isset($data['preview_path'])) {
+            $project->preview_path = $data['preview_path'];
+        }
         $project->save();
 
         return redirect()->route('admin.projects.show', $project);

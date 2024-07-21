@@ -19,9 +19,9 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <img
-                                class="placeholder-proj img-fluid card-img"
-                                src="{{ Vite::asset("resources/img/project-placeholder.png") }}"
-                                alt="project-placeholder"
+                                class="img-fluid card-img"
+                                src="{{ $project->preview_path ? asset($project->preview_path) : Vite::asset("resources/img/project-placeholder.png") }}"
+                                alt="{{ $project->title }}"
                             />
                             <h4 class="card-title">{{ $project->title }}</h4>
                             <p class="card-text">

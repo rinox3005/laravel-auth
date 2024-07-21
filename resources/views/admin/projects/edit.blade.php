@@ -24,6 +24,7 @@
                 <form
                     action="{{ route("admin.projects.update", $project) }}"
                     method="POST"
+                    enctype="multipart/form-data"
                 >
                     @csrf
                     @method("PUT")
@@ -93,6 +94,17 @@
                                 </option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="preview" class="form-label">
+                            Preview Image
+                        </label>
+                        <input
+                            type="file"
+                            class="form-control"
+                            id="preview"
+                            name="preview"
+                        />
                     </div>
                     <a
                         href="{{ route("admin.projects.index") }}"

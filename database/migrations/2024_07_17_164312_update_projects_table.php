@@ -15,6 +15,9 @@ return new class extends Migration
             $table->string('title', 255)->after('id');
             $table->string('type', 100)->after('title');
             $table->string('programming_language', 100)->after('type');
+            $table->string('slug', 255)->after('programming_language');
+            $table->string('status', 20)->after('slug');
+            $table->string('preview_path')->nullable()->after('status');
         });
     }
 
@@ -24,7 +27,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            $table->dropColumn(['title', 'type', 'programming_language']);
+            $table->dropColumn(['title', 'type', 'programming_language', 'slug', 'status', 'preview_path']);
         });
     }
 };

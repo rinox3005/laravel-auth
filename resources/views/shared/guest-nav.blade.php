@@ -53,7 +53,7 @@
                             class="nav-link"
                             href="{{ route("admin.projects.index") }}"
                         >
-                            {{ __("Projects") }}
+                            {{ __("Projects Manager") }}
                         </a>
                     </li>
                 @endauth
