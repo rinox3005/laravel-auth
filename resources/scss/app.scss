@@ -37,3 +37,9 @@ a {
     background-color: rgba(0, 0, 0, 0.75); /* Black overlay with 50% opacity */
     z-index: 0;
 }
+
+.card-img {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}

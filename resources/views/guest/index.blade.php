@@ -19,11 +19,13 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <img
-                                class="img-fluid card-img"
+                                class="card-img"
                                 src="{{ $project->preview_path ? asset($project->preview_path) : Vite::asset("resources/img/project-placeholder.png") }}"
                                 alt="{{ $project->title }}"
                             />
-                            <h4 class="card-title">{{ $project->title }}</h4>
+                            <h4 class="card-title py-3">
+                                {{ $project->title }}
+                            </h4>
                             <p class="card-text">
                                 <strong>Type:</strong>
                                 {{ $project->type }}
