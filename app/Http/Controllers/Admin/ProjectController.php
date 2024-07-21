@@ -42,7 +42,7 @@ class ProjectController extends Controller
         // Handle file upload
         if ($request->hasFile('preview')) {
             $file = $request->file('preview');
-            $fileName = time() . '_' . $file->getClientOriginalName();
+            $fileName = $file->getClientOriginalName();
             $imagePath = $file->storeAs('images', $fileName, 'public');
             $data['preview_path'] = 'storage/' . $imagePath;
         }
@@ -50,6 +50,8 @@ class ProjectController extends Controller
         $project = new Project();
         $project->title = $data['title'];
         $project->type = $data['type'];
+        $project->description = $data['description'];
+        $project->key_features = $data['key_features'];
         $project->programming_language = $data['programming_language'];
         $project->slug = $data['slug'];
         $project->status = $data['status'];
@@ -99,6 +101,8 @@ class ProjectController extends Controller
 
         $project->title = $data['title'];
         $project->type = $data['type'];
+        $project->description = $data['description'];
+        $project->key_features = $data['key_features'];
         $project->programming_language = $data['programming_language'];
         $project->slug = $data['slug'];
         $project->status = $data['status'];

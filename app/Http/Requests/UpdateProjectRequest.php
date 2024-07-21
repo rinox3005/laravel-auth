@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateProjectRequest extends FormRequest
 {
@@ -22,11 +23,13 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|min:5',
-            'type' => 'required|string',
-            'programming_language' => 'required|string|max:255',
-            'status' => 'required|string',
-            'preview' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'title' => ['required', 'string', 'min:5', 'max:255', Rule::unique('projects')->ignore($this->route('project'))],
+            'type' => 'required|string|max:100',
+            'description' => 'nullable|string',
+            'key_features' => 'nullable|string',
+            'programming_language' => 'required|string|max:100',
+            'status' => 'required|string|max:20',
+            'preview' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ];
     }
     public function messages(): array
@@ -34,12 +37,14 @@ class UpdateProjectRequest extends FormRequest
         return [
             'title.required' => 'The title is required.',
             'title.min' => 'The title must be at least 5 characters.',
+            'title.max' => 'The title may not be greater than 255 characters.',
             'title.unique' => 'The title has already been taken.',
             'type.required' => 'The type is required.',
             'programming_language.required' => 'The programming language is required.',
             'status.required' => 'The status is required.',
+            'status.max' => 'The status may not be greater than 20 characters.',
             'preview.image' => 'The preview must be an image.',
-            'preview.mimes' => 'The preview must be a file of type: jpeg, png, jpg, gif, svg.',
+            'preview.mimes' => 'The preview must be a file of type: jpeg, png, jpg, gif, svg, webp.',
             'preview.max' => 'The preview must not be greater than 2048 kilobytes.',
         ];
     }

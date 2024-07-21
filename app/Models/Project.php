@@ -11,7 +11,7 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'type', 'programming_language', 'slug', 'status', 'preview_path'
+        'title', 'type', 'description', 'key_features', 'programming_language', 'slug', 'status', 'preview_path'
     ];
 
     // funzione per eliminare l'immagine di preview dallo storage quando elimino il progetto
