@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 
 Route::get('/projects', [PageController::class, 'index'])->name('projects');
+Route::get('/projects/{project:slug}', [PageController::class, 'show'])->name('projects.show');
 
 
 Route::middleware(['auth', 'verified'])

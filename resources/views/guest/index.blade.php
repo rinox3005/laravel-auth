@@ -38,6 +38,12 @@
                                 <strong>Status:</strong>
                                 {{ $project->status }}
                             </p>
+                            <a
+                                href="{{ route("projects.show", $project) }}"
+                                class="btn btn-primary"
+                            >
+                                View Details
+                            </a>
                         </div>
                     </div>
                 </div>

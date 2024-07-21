@@ -29,7 +29,7 @@ class UpdateProjectRequest extends FormRequest
             'key_features' => 'nullable|string',
             'programming_language' => 'required|string|max:100',
             'status' => 'required|string|max:20',
-            'preview' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'preview' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:5000',
         ];
     }
     public function messages(): array
@@ -45,7 +45,7 @@ class UpdateProjectRequest extends FormRequest
             'status.max' => 'The status may not be greater than 20 characters.',
             'preview.image' => 'The preview must be an image.',
             'preview.mimes' => 'The preview must be a file of type: jpeg, png, jpg, gif, svg, webp.',
-            'preview.max' => 'The preview must not be greater than 2048 kilobytes.',
+            'preview.max' => 'The preview must not be greater than 5 MB.',
         ];
     }
 }

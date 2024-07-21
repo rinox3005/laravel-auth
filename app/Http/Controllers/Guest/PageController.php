@@ -10,7 +10,12 @@ class PageController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::where('status', 'Completed')->get();
         return view('guest.index', compact('projects'));
+    }
+
+    public function show(Project $project)
+    {
+        return view('guest.show', compact('project'));
     }
 }
