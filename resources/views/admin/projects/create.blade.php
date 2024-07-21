@@ -78,7 +78,7 @@
                             class="form-control"
                             id="key_features"
                             name="key_features"
-                            value="{{ old("key_features", $project->key_features) }}"
+                            value="{{ old("key_features") }}"
                         />
                     </div>
                     <div class="mb-3">

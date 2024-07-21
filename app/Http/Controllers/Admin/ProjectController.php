@@ -25,7 +25,7 @@ class ProjectController extends Controller
     public function create()
     {
         $types = ['Front-End', 'Back-End', 'Full-Stack'];
-        $programmingLanguages = ['PHP', 'JavaScript', 'Python', 'Ruby', 'Java', 'C#', 'C++'];
+        $programmingLanguages = ['PHP', 'JavaScript', 'Vite', 'Vue', 'HTML', 'CSS', 'Laravel'];
         $statuses = ['Completed', 'In Progress'];
 
         return view('admin.projects.create', compact('types', 'programmingLanguages', 'statuses'));
@@ -78,7 +78,7 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = ['Front-End', 'Back-End', 'Full-Stack'];
-        $programmingLanguages = ['PHP', 'JavaScript', 'Python', 'Ruby', 'Java', 'C#', 'C++'];
+        $programmingLanguages = ['PHP', 'JavaScript', 'Vite', 'Vue', 'HTML', 'CSS', 'Laravel'];
         $statuses = ['Completed', 'In Progress'];
 
         return view('admin.projects.edit', compact('project', 'types', 'programmingLanguages', 'statuses'));

@@ -7,7 +7,9 @@
 @section("content")
     <div class="container my-4">
         <div class="project-details">
-            <h2 class="display-4 mb-4 text-center">{{ $project->title }}</h2>
+            <h2 class="display-4 fw-semibold mb-4 text-center">
+                {{ $project->title }}
+            </h2>
             <div class="content">
                 <div class="image-container">
                     @if ($project->preview_path)

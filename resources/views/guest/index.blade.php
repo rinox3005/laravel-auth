@@ -17,27 +17,15 @@
             @foreach ($projects as $project)
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <img
                                 class="card-img"
                                 src="{{ $project->preview_path ? asset($project->preview_path) : Vite::asset("resources/img/project-placeholder.png") }}"
                                 alt="{{ $project->title }}"
                             />
-                            <h4 class="card-title py-3">
+                            <h2 class="card-title display-6 fw-bold py-3">
                                 {{ $project->title }}
-                            </h4>
-                            <p class="card-text">
-                                <strong>Type:</strong>
-                                {{ $project->type }}
-                            </p>
-                            <p>
-                                <strong>Programming Language:</strong>
-                                {{ $project->programming_language }}
-                            </p>
-                            <p>
-                                <strong>Status:</strong>
-                                {{ $project->status }}
-                            </p>
+                            </h2>
                             <a
                                 href="{{ route("projects.show", $project) }}"
                                 class="btn btn-primary"
