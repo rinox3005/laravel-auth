@@ -23,7 +23,7 @@
                     @endif
                 </div>
                 <div class="details">
-                    <h4>Details</h4>
+                    <h4 class="mt-4">Details</h4>
                     <div class="row">
                         <div class="col-md-6">
                             <p>
@@ -55,7 +55,10 @@
                         <i class="fas fa-arrow-left"></i>
                         Back to Projects
                     </a>
-                    <a href="#" class="btn btn-primary">
+                    <a
+                        href="{{ $project->link_to_website }}"
+                        class="btn btn-primary"
+                    >
                         <i class="fas fa-external-link-alt"></i>
                         Visit
                     </a>

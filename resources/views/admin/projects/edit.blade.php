@@ -74,13 +74,25 @@
                         <label for="key_features" class="form-label">
                             Key Features
                         </label>
-                       <input
+                        <input
+                            type="text"
                             class="form-control"
                             id="key_features"
                             name="key_features"
-                            rows="4"
                             value="{{ old("key_features", $project->key_features) }}"
-                        ></input>
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="link_to_website" class="form-label">
+                            Link to Website
+                        </label>
+                        <input
+                            type="url"
+                            class="form-control"
+                            id="link_to_website"
+                            name="link_to_website"
+                            value="{{ old("link_to_website", $project->link_to_website) }}"
+                        />
                     </div>
                     <div class="mb-3">
                         <label for="programming_language" class="form-label">

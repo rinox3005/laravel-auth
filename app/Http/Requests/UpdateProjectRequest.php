@@ -27,6 +27,7 @@ class UpdateProjectRequest extends FormRequest
             'type' => 'required|string|max:100',
             'description' => 'nullable|string',
             'key_features' => 'nullable|string',
+            'link_to_website' => 'nullable|url',
             'programming_language' => 'required|string|max:100',
             'status' => 'required|string|max:20',
             'preview' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:5000',
@@ -46,6 +47,7 @@ class UpdateProjectRequest extends FormRequest
             'preview.image' => 'The preview must be an image.',
             'preview.mimes' => 'The preview must be a file of type: jpeg, png, jpg, gif, svg, webp.',
             'preview.max' => 'The preview must not be greater than 5 MB.',
+            'link_to_website.url' => 'The link to the website must be a valid URL.',
         ];
     }
 }

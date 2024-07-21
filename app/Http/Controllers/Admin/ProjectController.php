@@ -53,6 +53,7 @@ class ProjectController extends Controller
         $project->description = $data['description'];
         $project->key_features = $data['key_features'];
         $project->programming_language = $data['programming_language'];
+        $project->link_to_website = $data['link_to_website'];
         $project->slug = $data['slug'];
         $project->status = $data['status'];
         if (isset($data['preview_path'])) {
@@ -104,6 +105,7 @@ class ProjectController extends Controller
         $project->description = $data['description'];
         $project->key_features = $data['key_features'];
         $project->programming_language = $data['programming_language'];
+        $project->link_to_website = $data['link_to_website'];
         $project->slug = $data['slug'];
         $project->status = $data['status'];
         if (isset($data['preview_path'])) {

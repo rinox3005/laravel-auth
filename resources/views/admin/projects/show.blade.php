@@ -13,12 +13,7 @@
             >
                 <h2 class="mb-0">{{ $project->title }}</h2>
                 <span
-                    class="badge @if ($project->status == "Completed")
-                        bg-success
-                    @elseif ($project->status == "In Progress")
-                        bg-warning
-                        text-dark
-                    @endif"
+                    class="badge @if ($project->status == 'Completed') bg-success @elseif ($project->status == 'In Progress') bg-warning text-dark @endif"
                 >
                     {{ $project->status }}
                 </span>
@@ -70,6 +65,21 @@
                                 </p>
                             </div>
                         </div>
+                        @if ($project->link_to_website)
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <p class="mb-2">
+                                        <strong>Website:</strong>
+                                        <a
+                                            href="{{ $project->link_to_website }}"
+                                            target="_blank"
+                                        >
+                                            {{ $project->link_to_website }}
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                     @if ($project->preview_path)
                         <div class="col-md-3 text-center">
