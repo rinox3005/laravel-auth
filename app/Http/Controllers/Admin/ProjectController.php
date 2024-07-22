@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -40,12 +41,11 @@ class ProjectController extends Controller
         $data['slug'] = Str::of($data['title'])->slug();
 
         // Handle file upload
-        if ($request->hasFile('preview')) {
-            $file = $request->file('preview');
-            $fileName = $file->getClientOriginalName();
-            $imagePath = $file->storeAs('images', $fileName, 'public');
-            $data['preview_path'] = 'storage/' . $imagePath;
-        }
+        $file = $request->file('preview');
+        $fileName = $file->getClientOriginalName();
+        $imagePath = $file->storeAs('images', $fileName, 'public');
+        $data['preview_path'] = 'storage/' . $imagePath;
+
 
         $project = new Project();
         $project->title = $data['title'];
@@ -56,9 +56,7 @@ class ProjectController extends Controller
         $project->link_to_website = $data['link_to_website'];
         $project->slug = $data['slug'];
         $project->status = $data['status'];
-        if (isset($data['preview_path'])) {
-            $project->preview_path = $data['preview_path'];
-        }
+        $project->preview_path = $data['preview_path'];
         $project->save();
 
         return redirect()->route('admin.projects.index', $project)->with('message', 'Project ' . $project->title . ' successfully created');
@@ -120,6 +118,11 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        // controlla se il progetto ha un'immagine collegata e la elimina
+        if ($project->preview_path) {
+            Storage::delete($project->preview_path);
+        }
+
         $project_title = $project->title;
         $project->delete();
 
