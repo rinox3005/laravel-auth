@@ -7,6 +7,13 @@
 @section("content")
     <div class="container">
         <h1 class="my-4 text-center">Project Details</h1>
+
+        @if (session("message"))
+            <div class="alert alert-success">
+                {{ session("message") }}
+            </div>
+        @endif
+
         <div class="card mt-4 shadow-sm">
             <div
                 class="card-header bg-primary d-flex justify-content-between align-items-center text-white"

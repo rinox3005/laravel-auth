@@ -61,7 +61,7 @@ class ProjectController extends Controller
         }
         $project->save();
 
-        return redirect()->route('admin.projects.show', $project);
+        return redirect()->route('admin.projects.index', $project)->with('message', 'Project ' . $project->title . ' successfully created');
     }
 
     /**
@@ -100,20 +100,19 @@ class ProjectController extends Controller
             $data['preview_path'] = 'storage/' . $imagePath;
         }
 
-        $project->title = $data['title'];
-        $project->type = $data['type'];
-        $project->description = $data['description'];
-        $project->key_features = $data['key_features'];
-        $project->programming_language = $data['programming_language'];
-        $project->link_to_website = $data['link_to_website'];
-        $project->slug = $data['slug'];
-        $project->status = $data['status'];
-        if (isset($data['preview_path'])) {
-            $project->preview_path = $data['preview_path'];
-        }
-        $project->save();
+        $project->update($data);
+        // $project->title = $data['title'];
+        // $project->type = $data['type'];
+        // $project->description = $data['description'];
+        // $project->key_features = $data['key_features'];
+        // $project->programming_language = $data['programming_language'];
+        // $project->link_to_website = $data['link_to_website'];
+        // $project->slug = $data['slug'];
+        // $project->status = $data['status'];
+        // $project->preview_path = $data['preview_path'];
+        // $project->save();
 
-        return redirect()->route('admin.projects.show', $project);
+        return redirect()->route('admin.projects.show', $project)->with('message', $project->title . ' successfully updated');
     }
 
     /**
@@ -121,8 +120,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $project_title = $project->title;
         $project->delete();
 
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('message', $project_title . ' successfully deleted');
     }
 }

@@ -18,6 +18,13 @@
                 </a>
             </div>
         </div>
+
+        @if (session("message"))
+            <div class="alert alert-success">
+                {{ session("message") }}
+            </div>
+        @endif
+
         <ul class="list-group mb-5 mt-3">
             @foreach ($projects as $project)
                 <li
@@ -45,7 +52,7 @@
                         <button
                             class="btn btn-danger btn-sm"
                             data-bs-toggle="modal"
-                            data-bs-target="#deleteModal"
+                            data-bs-target="#deleteModal{{ $project->id }}"
                             data-bs-project-id="{{ $project->id }}"
                             data-bs-project-title="{{ $project->title }}"
                         >
@@ -56,7 +63,7 @@
                 <!-- Modal -->
                 <div
                     class="modal fade"
-                    id="deleteModal"
+                    id="deleteModal{{ $project->id }}"
                     tabindex="-1"
                     aria-labelledby="deleteModalLabel"
                     aria-hidden="true"
